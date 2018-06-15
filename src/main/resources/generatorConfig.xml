@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- classPathEntry:数据库的JDBC驱动的jar包地址 -->
+    <classPathEntry
+        location="D:\repo\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
+  <context id="userTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/power" 
+			userId="root"
+			password="root">
+		</jdbcConnection> 
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="org.family.ssm.entity"
+			targetProject="ssm/src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="org.family.ssm.mapper" 
+			targetProject="ssm/src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：dao接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.family.ssm.dao" 
+			targetProject="ssm/src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+			<!-- 要生成的那些表(更改tableName 和domainObjectName 就可以了) -->  
+        <table schema="ssm" tableName="sys_user" domainObjectName="UserEntity" mapperName="IUserDao"  enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">  
+            <columnOverride column="user_id" property="id" />  
+            <columnOverride column="user_name" property="userName" />  
+            <columnOverride column="user_password" property="userPassword" />  
+            <columnOverride column="user_tel" property="userTel" />  
+            <columnOverride column="user_state" property="userState" />  
+        </table>
+	</context>
+</generatorConfiguration>
