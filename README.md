@@ -2,5 +2,5 @@
 
 2）SSM框架首次整合完成，最基础版本V1.0。
 
-3）数据库脚本sys_power.sql。
+3）数据库sys_power.sql。
 
