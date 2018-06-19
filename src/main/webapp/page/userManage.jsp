@@ -38,16 +38,16 @@
           </c:forEach>
         </table>
         <p>当前 ${pageInfo.pageNum }页,总${pageInfo.pages }页,总 ${pageInfo.total } 条记录</div></p>
-        <a href="showAllUserList?pageNo=${pageInfo.firstPage}">第一页</a>
+        <a href="showAllUserList?pageNo=${pageInfo.firstPage}" style="text-decoration: none">第一页</a>
         <c:if test="${pageInfo.hasPreviousPage }">
-            <a href="showAllUserList?pageNo=${pageInfo.pageNum-1}">上一页</a>
+            <a href="showAllUserList?pageNo=${pageInfo.pageNum-1}" style="text-decoration: none">上一页</a>
         </c:if>
       
         <c:if test="${pageInfo.hasNextPage }">
-            <a href="showAllUserList?pageNo=${pageInfo.pageNum+1}">下一页</a>
+            <a href="showAllUserList?pageNo=${pageInfo.pageNum+1}" style="text-decoration: none">下一页</a>
         </c:if>
         
-        <a href="showAllUserList?pageNo=${pageInfo.lastPage}">最后页</a>
+        <a href="showAllUserList?pageNo=${pageInfo.lastPage}" style="text-decoration: none">最后一页</a>
     </center>
 </body>
 </html>

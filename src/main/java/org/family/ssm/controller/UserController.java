@@ -97,6 +97,11 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * 通过用户对象修改用户信息
+	 * @param record 用户对象
+	 * @return 修改成功返回分页显示所有用户页面，修改失败，返回修改页面。
+	 */
 	@RequestMapping("updateUser")
 	public ModelAndView updateUser(UserEntity record) {
 		int n=userService.updateByPrimaryKey(record);
