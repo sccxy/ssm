@@ -34,9 +34,12 @@ public class UserController {
 	 * @return	用户详情页面
 	 */
 	@RequestMapping("showUser")
-	public String showUser(String userId,Model m) {
+	public String showUser(String userId,String typeId,Model m) {
 		m.addAttribute("user", userService.selectByPrimaryKey(userId));
-		return "showUser";
+		if("1".equals(typeId)) {
+			return "showUser";
+		}
+		return "updateUser";
 	}
 	
 	/**
@@ -55,4 +58,55 @@ public class UserController {
         map.addAttribute("pageInfo", pageInfo);
         return "userManage";
     }
+	
+	/**
+	 * 添加用户对象
+	 * @param record 用户对象
+	 * @return 添加成功重定向到showAllUserList显示所用分页用户页面，
+	 * 		      添加失败，返回错误提示信息。
+	 */
+	@RequestMapping("insertUser")
+	public ModelAndView insertUser(UserEntity record) {
+		int n=userService.insert(record);
+		if(n>0) { //添加成功
+			ModelAndView m=new ModelAndView("redirect:/showAllUserList");
+			return m;
+		}else { //添加失败
+			ModelAndView m=new ModelAndView();
+			m.setViewName("insertUser");
+			return m;
+		}
+	}
+	
+	/**
+	 * 根据用户ID删除用户对象
+	 * @param id 用户ID
+	 * @return 删除成功重定向到showAllUserList显示所用分页用户页面，
+	 * 		   删除失败当前也提示删除失败。
+	 */
+	@RequestMapping("deleteUser")
+	public ModelAndView deleteUser(String userId) {
+		int n=userService.deleteByPrimaryKey(userId);
+		if(n>0) { //删除成功
+			ModelAndView m=new ModelAndView("redirect:/showAllUserList");
+			return m;
+		}else { //删除失败
+			ModelAndView m=new ModelAndView();
+			m.setViewName("insertUser");
+			return m;
+		}
+	}
+	
+	@RequestMapping("updateUser")
+	public ModelAndView updateUser(UserEntity record) {
+		int n=userService.updateByPrimaryKey(record);
+		if(n>0) { //修改成功
+			ModelAndView m=new ModelAndView("redirect:/showAllUserList");
+			return m;
+		}else { //修改失败
+			ModelAndView m=new ModelAndView();
+			m.setViewName("updateUser");
+			return m;
+		}
+	}
 }

@@ -14,7 +14,9 @@
 <title>用户管理模块</title>
 </head>
 <body>
-	<a href="/ssm/" target= _blank style="text-decoration: none" >返回</a>
+	${success }
+	<a href="/ssm/" style="text-decoration: none" >返回</a>
+	<a href="/ssm/page/insertUser.jsp"  style="text-decoration: none" >添加用户</a>
 	<center>
         <table width="60%" border="1" cellSpacing="0">
           <tr>
@@ -28,7 +30,10 @@
             <td>${user.id}</td>
             <td>${user.userName}</td>
             <td>${user.userPassword}</td>
-            <td><a href="showUser?userId=${user.id}" target= _blank>详情</a></td>
+            <td><a href="showUser?userId=${user.id}&typeId=1" target= _blank style="text-decoration: none">详情</a>
+                <a href="deleteUser?userId=${user.id}" style="text-decoration: none">删除</a>
+                <a href="showUser?userId=${user.id}&typeId=2" style="text-decoration: none">修改</a>
+            </td>
           </tr>
           </c:forEach>
         </table>

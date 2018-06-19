@@ -16,7 +16,6 @@
 <script type="text/javascript" src="/ssm/assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<a href="/ssm/showAllUserList" target= _blank style="text-decoration: none">返回</a>
 	<table width="60%" border="1"   cellspacing="0">
 	<tr><th>ID</th><th>用户名</th><th>密码</th></tr>
 	<thead>
